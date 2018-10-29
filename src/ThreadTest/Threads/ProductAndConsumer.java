@@ -27,7 +27,7 @@ public class ProductAndConsumer {
         //模拟并发实验
         for(int i = 1; i<=20; i++){
 
-
+            System.out.println("123");
 
             ReciveMessage reciveMessage = new ReciveMessage(i);
             productPool.execute(new ProductThread(reciveMessage.reciveMessage(),queue));
