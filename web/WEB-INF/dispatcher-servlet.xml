@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/cache
+       http://www.springframework.org/schema/cache/spring-cache.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+<context:component-scan base-package="controller"/>
+
+
+<mvc:default-servlet-handler/>
+
+<mvc:annotation-driven/>
+
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+    id="internalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/jsp/" />
+    <property name="suffix" value=".jsp" />
+
+</bean>
+
+<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+
+<!--<bean id="propertyPlaceHolderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+    <!--<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />-->
+    <!--<property name="ignoreResourceNotFound" value="true" />-->
+    <!--<property name="locations">-->
+        <!--<list>-->
+            <!--&lt;!&ndash; 把需要配置的properties文件配置在这里，可以有多个 &ndash;&gt;-->
+            <!--<value>classpath:converter.properties</value>-->
+        <!--</list>-->
+    <!--</property>-->
+<!--</bean>-->
+
+<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+    <property name="location">
+        <value>converter.properties</value>
+    </property>
+</bean>
+
+<!--上传文件-->
+<bean id="multipartResolver"
+      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- 上传的最大限制 -->
+    <property name="maxUploadSize" value="209715200" />
+    <!-- 默认编码 -->
+    <property name="defaultEncoding" value="UTF-8" />
+    <!-- 上传文件的解析 -->
+    <property name="resolveLazily" value="true" />
+</bean>
+
+
+</beans>
