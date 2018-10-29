@@ -11,5 +11,6 @@ public class MoreFun {
             System.out.println(i);
         }
         int no=0;
+        String ap;
     }
 }
