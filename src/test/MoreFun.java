@@ -10,5 +10,6 @@ public class MoreFun {
         for(;i<10;i++){
             System.out.println(i);
         }
+        int no=0;
     }
 }
