@@ -201,7 +201,24 @@ public class Fun {
 
 
 
-
+    public boolean isAnagram(String s, String t) {
+        Boolean flag = false;
+        if(s.length()==t.length()) {
+            for (int i = 0; i < s.length(); i++) {
+                for (int y = 0; y < t.length(); y++) {
+                    char rr = t.charAt(y);
+                    if (rr == s.charAt(i)) {
+                        flag = true;
+                    }
+                    if (y == t.length() - 1) {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return flag;
+    }
 
 
 
